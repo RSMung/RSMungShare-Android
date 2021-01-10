@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义view加载动画的属性-->
+    <declare-styleable name="LoadingAnimation">
+        <!--动画的颜色-->
+        <attr name="main_color" format="color"/>
+        <attr name="android:layout_width" />
+        <attr name="android:layout_height" />
+    </declare-styleable>
+</resources>

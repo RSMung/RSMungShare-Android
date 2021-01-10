@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RSMungShare</string>
+
+    <string name="myDesktop">我的电脑</string>
+    <string name="send">发送</string>
+    <string name="send_hint">请输入</string>
+    <string name="test_time">07-17 10:41</string>
+    <string name="detail_title">详细资料</string>
+    <string name="text_local_ip">当前手机IP地址</string>
+    <string name="text_target_ip">目标电脑IP地址</string>
+    <string name="introduce_fun">功能介绍</string>
+    <string name="description">无需数据线,局域网内电脑与手机轻松互传消息,支持文字、图片、音乐、视频以及各种文件类型。</string>
+    <string name="clear_records">清空消息记录</string>
+    <string name="enter_main">打开应用即进入传输界面</string>
+</resources>
