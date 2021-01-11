@@ -42,8 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/inputBar"/>
-
+        android:layout_above="@+id/inputBar"
+        android:transcriptMode="alwaysScroll"/>
+<!--    transcriptMode设置为alwaysScroll的话，当内容满屏的时候自动滚动显示最后一条-->
     <LinearLayout
         android:id="@+id/inputBar"
         android:layout_width="match_parent"

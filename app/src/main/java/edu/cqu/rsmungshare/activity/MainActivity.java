@@ -243,8 +243,10 @@ public class MainActivity extends BaseActivity {
             listView = findViewById(R.id.content);
 //        adapter = new TextMsgAdapter(this,R.layout.item_text_right,MsgCollector.getList());
         if(adapter == null)
-            adapter = new MsgAdapter(this,MsgCollector.getList());
+            adapter = new MsgAdapter(this);
         listView.setAdapter(adapter);
+        //滑动到底部
+        listView.setSelection(listView.getBottom());
     }
 
 //    /*刷新listview*/

@@ -16,7 +16,7 @@ public class MsgCollector {
     public static MsgBean getMsg(int index){
         if(index >= list.size()){
             Log.w(TAG,"数组下标越界!");
-            return null;
+            throw new RuntimeException("数组下标越界!");
         }
         return list.get(index);
     }
