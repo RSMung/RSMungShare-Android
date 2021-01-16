@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:maxWidth="250dp"
+            android:padding="10dp"
             android:background="@drawable/bubble_left"/>
 
     </LinearLayout>
