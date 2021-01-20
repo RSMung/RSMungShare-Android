@@ -30,6 +30,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.SelectImageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance">
+
+        </activity>
     </application>
 
 </manifest>

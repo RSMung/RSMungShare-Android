@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.ObjectOutputStream;
 import java.lang.ref.WeakReference;
@@ -67,6 +68,14 @@ public class MainActivity extends BaseActivity {
                 Intent intent = new Intent(MainActivity.this,DetailActivity.class);
                 intent.putExtra("FROM_MAIN","TRUE");//表示是从MAIN启动的,就不检查是否直接进入传输界面了
                 startActivity(intent);
+            }
+        });
+        //选择图片按钮
+        ImageView btn_select_image = findViewById(R.id.btn_select_image);
+        btn_select_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(MainActivity.this, SelectImageActivity.class), 0);
             }
         });
     }
@@ -249,14 +258,6 @@ public class MainActivity extends BaseActivity {
         listView.setSelection(listView.getBottom());
     }
 
-//    /*刷新listview*/
-//    private void flushListView(){
-//        if(listView != null && adapter!= null){//通知数据变化
-//            adapter.notifyDataSetChanged();
-//            listView.invalidate();
-//        }
-//    }
-
     /*开始接收消息*/
     private void startReceiveMsg(){
         new ReceiveMsgThread(new UpdateUiHandler(this)).start();
@@ -266,5 +267,13 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         ActivityCollector.finishAll();//本界面返回按钮直接退出应用
+    }
+
+    @Override
+    protected void onActivityResult(int request_code, int result_code, Intent data){
+        if(result_code == RESULT_OK){
+            String selected_image_path = data.getStringExtra("selected_image_path");
+            Toast.makeText(MainActivity.this,"我收到选择的图片的路径了",Toast.LENGTH_SHORT).show();
+        }
     }
 }
