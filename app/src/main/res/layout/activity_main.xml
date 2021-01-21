@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black_color"
     tools:context=".activity.MainActivity">
     <RelativeLayout
@@ -37,13 +37,23 @@
             android:src="@drawable/menu_gray"/>
     </RelativeLayout>
 
+    <edu.cqu.rsmungshare.myview.LoadingAnimation
+        android:id="@+id/loading_animation"
+        android:layout_below="@+id/toolbar"
+        style="@style/LoadingAnimationStyle"
+        android:layout_centerHorizontal="true"
+        app:main_color="@color/white_color"
+        tools:visibility="visible"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/loading_animation"
         android:layout_above="@+id/inputBar"
         android:transcriptMode="alwaysScroll"/>
+
 <!--    transcriptMode设置为alwaysScroll的话，当内容满屏的时候自动滚动显示最后一条-->
     <LinearLayout
         android:id="@+id/inputBar"

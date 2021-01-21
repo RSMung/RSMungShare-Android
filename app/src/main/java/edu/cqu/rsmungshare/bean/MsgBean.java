@@ -10,11 +10,11 @@ public class MsgBean implements Serializable {
     private String source;//消息源  ip
     private String target;//消息目标ip
     private int size;//消息大小  单位KB
-    private String tvContent;//消息内容---文本
-    private String imagePath;//消息内容---图片路径
-    private String filePath;//消息内容---文件路径
+    private String tvContent;//消息内容---文本   或者是图片名称、文件名称
+    private byte[] image_data;//消息内容---图片
+    private byte[] file_data;//消息内容---文件路径
     public MsgBean(int seq, String type, String time, String source, String target, int size, String tvContent,
-                   String imagePath, String filePath) {
+                   byte[] image_data, byte[] file_data) {
         super();
         this.seq = seq;
         this.type = type;
@@ -23,8 +23,8 @@ public class MsgBean implements Serializable {
         this.target = target;
         this.size = size;
         this.tvContent = tvContent;
-        this.imagePath = imagePath;
-        this.filePath = filePath;
+        this.image_data = image_data;
+        this.file_data = file_data;
     }
     public int getSeq() {
         return seq;
@@ -68,22 +68,22 @@ public class MsgBean implements Serializable {
     public void setTvContent(String tvContent) {
         this.tvContent = tvContent;
     }
-    public String getImagePath() {
-        return imagePath;
+    public byte[] getImage_data() {
+        return image_data;
     }
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage_data(byte[] image_data) {
+        this.image_data = image_data;
     }
-    public String getFilePath() {
-        return filePath;
+    public byte[] getFile_data() {
+        return file_data;
     }
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setFile_data(byte[] file_data) {
+        this.file_data = file_data;
     }
     @Override
     public String toString() {
         return seq + "," + type + "," + time + "," + source + "," + target
-                + "," + size + "," + tvContent + "," + imagePath + "," + filePath
+                + "," + size + "," + tvContent
                 ;
     }
 }

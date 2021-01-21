@@ -3,15 +3,19 @@ package edu.cqu.rsmungshare.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
 import com.jph.takephoto.model.InvokeParam;
 import com.jph.takephoto.model.TContextWrap;
+import com.jph.takephoto.model.TImage;
 import com.jph.takephoto.model.TResult;
 import com.jph.takephoto.permission.InvokeListener;
 import com.jph.takephoto.permission.PermissionManager;
 import com.jph.takephoto.permission.TakePhotoInvocationHandler;
+
+import java.util.ArrayList;
 
 import edu.cqu.rsmungshare.R;
 import edu.cqu.rsmungshare.model.BaseActivity;
@@ -25,7 +29,8 @@ public class SelectImageActivity extends BaseActivity implements TakePhoto.TakeR
     protected void onCreate(Bundle savedInstanceState) {
         getTakePhoto().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
-        takePhoto.onPickFromGallery();
+//        takePhoto.onPickFromGallery();
+        takePhoto.onPickMultiple(20);
     }
 
     @Override
@@ -61,22 +66,37 @@ public class SelectImageActivity extends BaseActivity implements TakePhoto.TakeR
 
     @Override
     public void takeSuccess(TResult result) {
-        String selected_image_path = result.getImage().getOriginalPath();
-        Log.w(TAG, "takeSuccess：" + selected_image_path);
+        ArrayList<TImage> images = result.getImages();
+        ArrayList<String> images_paths = new ArrayList<>();
+        for(int i=0; i < images.size(); i++){
+            images_paths.add(images.get(i).getOriginalPath());
+            Log.w(TAG, "takeSuccess：" + images_paths.get(i));
+        }
         Intent result_intent = new Intent();
-        result_intent.putExtra("selected_image_path", selected_image_path);
+        result_intent.putStringArrayListExtra("images_paths",images_paths);
         setResult(RESULT_OK, result_intent);
         finish();
+//        //单选图片时候的代码
+//        String selected_image_path = result.getImage().getOriginalPath();
+//        Log.w(TAG, "takeSuccess：" + selected_image_path);
+//        Intent result_intent = new Intent();
+//        result_intent.putExtra("selected_image_path", selected_image_path);
+//        setResult(RESULT_OK, result_intent);
+//        finish();
     }
 
     @Override
     public void takeFail(TResult result, String msg) {
         Log.w(TAG, "takeFail:" + msg);
+        Toast.makeText(SelectImageActivity.this,"选取照片失败",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     public void takeCancel() {
         Log.w(TAG, getResources().getString(R.string.msg_operation_canceled));
+        Toast.makeText(SelectImageActivity.this,getResources().getString(R.string.msg_operation_canceled),Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

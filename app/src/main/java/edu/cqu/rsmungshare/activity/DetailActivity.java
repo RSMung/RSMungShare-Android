@@ -21,6 +21,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import edu.cqu.rsmungshare.R;
+import edu.cqu.rsmungshare.model.ActivityCollector;
 import edu.cqu.rsmungshare.model.BaseActivity;
 import edu.cqu.rsmungshare.myview.LoadingAnimation;
 
@@ -30,9 +31,8 @@ public class DetailActivity extends BaseActivity {
     private LoadingAnimation loadingAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
         checkSw_enterMain();
+        super.onCreate(savedInstanceState);
         loadingAnimation = findViewById(R.id.loading_animation);
         displayLocalIP();
         dealToolbarBtn();
@@ -75,6 +75,10 @@ public class DetailActivity extends BaseActivity {
                 finish();//当前界面结束
             }
         }
+
+        //正常加载布局
+        setContentView(R.layout.activity_detail);
+
         Switch sw_enterMain = findViewById(R.id.sw_enterMain);
         sw_enterMain.setChecked(isEnterMainDirect);
         //监听事件
@@ -114,6 +118,7 @@ public class DetailActivity extends BaseActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     startActivity(new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS));
+                    ActivityCollector.finishAll();
                 }
             });
             builder.create().show();

@@ -11,6 +11,8 @@ public class MsgCollector {
         return list.size();
     }
     public static void addMsg(MsgBean msgBean){
+        msgBean.setImage_data(null);//避免爆内存
+        msgBean.setFile_data(null);
         list.add(msgBean);
     }
     public static MsgBean getMsg(int index){
