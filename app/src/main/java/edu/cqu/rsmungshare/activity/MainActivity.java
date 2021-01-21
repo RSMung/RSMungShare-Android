@@ -354,7 +354,7 @@ public class MainActivity extends BaseActivity {
                         local_ip,
                         target_ip,
                         image_data_len,
-                        tvContent,
+                        path,
                         buffer,
                         null
                 );

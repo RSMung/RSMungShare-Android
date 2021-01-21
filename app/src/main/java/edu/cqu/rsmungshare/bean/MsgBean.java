@@ -12,7 +12,7 @@ public class MsgBean implements Serializable {
     private int size;//消息大小  单位KB
     private String tvContent;//消息内容---文本   或者是图片名称、文件名称
     private byte[] image_data;//消息内容---图片
-    private byte[] file_data;//消息内容---文件路径
+    private byte[] file_data;//消息内容---文件数据
     public MsgBean(int seq, String type, String time, String source, String target, int size, String tvContent,
                    byte[] image_data, byte[] file_data) {
         super();
